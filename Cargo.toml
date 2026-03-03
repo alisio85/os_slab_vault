@@ -1,6 +1,6 @@
 [package]
 name = "os_slab_vault"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 license = "MIT"
 authors = ["AI assistant (ChatGPT) based on an idea by alisio85"]
