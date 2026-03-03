@@ -458,7 +458,7 @@ impl<'a, T: fmt::Debug, const N: usize> fmt::Debug for DebugItems<'a, T, N> {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, feature = "std"))]
 mod tests {
     use super::*;
 
@@ -513,9 +513,9 @@ mod tests {
         let k3 = s.insert(3).unwrap();
         let _ = s.remove(k1).unwrap();
 
-        let mut keys = s.iter().map(|(k, _)| k).collect::<Vec<_>>();
+        let mut keys = s.iter().map(|(k, _)| k).collect::<std::vec::Vec<_>>();
         keys.sort_by_key(|k| k.index());
-        assert_eq!(keys, vec![k2, k3]);
+        assert_eq!(keys, std::vec![k2, k3]);
     }
 
     #[test]
@@ -528,7 +528,7 @@ mod tests {
             *v += 1;
         }
 
-        let values = s.iter().map(|(_, v)| *v).collect::<Vec<_>>();
+        let values = s.iter().map(|(_, v)| *v).collect::<std::vec::Vec<_>>();
         assert!(values.contains(&2));
         assert!(values.contains(&11));
     }
